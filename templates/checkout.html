@@ -1,0 +1,106 @@
+{% extends 'dashboard.html' %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+<div class="bg-light">
+   
+        <a href="/shop" type="button" class="btn btn-info" style="text-decoration:none; float: right; width: fit-content;">Shopping More</a>
+  
+    <div class="col my-4">
+        <h2>Step 1 - Review Your Cart Items</h2>
+        <div class="my-4">
+            <ul class="list-group" id="items"></ul>
+            <div class="mx-4" style="float:right;">Total : <span style="color:red">&#8377;<span id="totalPrice"></span></span></div>
+        </div>
+    </div>
+    <div class="col my-4">
+        <h2>Step 2 - Enter Address & Other Details:</h2>
+        <form method="post" action="/checkout">
+            {% csrf_token %}
+            <input type="hidden" name="member_id" id="member_id" value="{{member.member_id}}" >
+            <input type="hidden" name="itemsJson" id="itemsJson">
+            <input type="hidden" name="amount" id="amount">
+            
+                <div class="form-group">
+                    <label for="inputname">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{member.full_name}}" required>
+                </div>
+                
+            
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="address1" name="address1" placeholder="Address" value="{{member.address}}" required>
+            </div>
+        
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{member.city}}" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <input type="text" class="form-control" id="state" name="state"  placeholder="State" value="{{member.state}}" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">PIN</label>
+                    <input type="text" class="form-control" id="pin_code" name="pin_code" placeholder="PIN" value="{{member.pincode}}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="input number">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone"placeholder="Phone Number" value="{{member.contact}}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+{% block js %}
+<script>
+    var userId = document.getElementById('userId').innerHTML
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    var sum = 0;
+    var totalPrice = 0;
+    if ($.isEmptyObject(cart)) {
+        //if object is empty
+        mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+        $('#items').append(mystr);
+    } else {
+        for (item in cart) {
+            let name = cart[item][1];
+            let qty = cart[item][0];
+            let itemPrice = cart[item][2];
+            sum = sum + qty;
+            totalPrice = totalPrice + qty*itemPrice;
+            itemtotalPrice = qty*itemPrice;
+            mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${name}
+                        <span class="badge">Qty: ${qty}</span>
+                        <span class="badge">&#8377;${itemPrice}</span>
+                        <span class="badge" style="color:blue;">&#8377;${itemtotalPrice}</span>
+                    </li>` 
+            $('#items').append(mystr);
+        }
+    }
+    document.getElementById('cart').innerHTML = sum;
+    document.getElementById('totalPrice').innerHTML = totalPrice;
+    $('#itemsJson').val(JSON.stringify(cart));
+    {% if thank %}
+    alert('Thanks for ordering with us. Your Order-Id is {{id}}.');
+    localStorage.clear();
+    document.location = "/shop";
+    {% endif %}
+    $('#amount').val($('#totalPrice').html())
+    </script>
+    
+{% endblock js %}

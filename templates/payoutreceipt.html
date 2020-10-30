@@ -1,0 +1,285 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-Receipts 
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="newcontainer"> 
+    <div class="col-sm-12" align="center" id="header">
+        <div id="header">
+            <span class="c1">My Receipt</span>
+        </div>
+    </div>
+    {% for payout in payouts %}
+    <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+                <thead>
+    <div id="recp_{{forloop.counter}}">
+        <div class="reciept">
+          <div class="recp-head" style="background-color: white;">
+            <div class="rec-logo">  
+                <!-- <img id="ctl00_ContentPlaceHolder1_imglogo" src="user_photos/70174_1020051404.jpg" style="border-width:0px;"> -->
+            </div>
+            <div class="rec-number">
+              <h3>Payout Reciept</h3>
+              <p>Invoice #<span style="color:blue;">{{invoice_no}}{{payout.payout_date|date:'yymd'}}</span></p>
+              <p>Date :  <span style="color:blue;">{{payout.payout_date|date:'d M Y'}}</span> </p>
+            </div>
+          </div>
+          <div class="recp-mid bg-light">
+            <div class="rec-name"><h2> <span>JN Health Pharma</span></h2></div>
+          </div>
+          <div class="recp-content bg-light">
+            <div class="recp-detail">
+              <h3>Payment Received To:</h3>
+              <h2><span>{{member.full_name}}</span> </h2>
+              <p>Member ID : <span>{{member.member_id}}</span>   </p>
+              <p>Receipt For : <span class="C4 mfont"></span>Earning from Business</p>
+            </div>
+            <div class="recp-amount">
+              <h3>Reciept Amount :</h3>
+              <h2><span><span class="currency">₹{{payout.sum}}</span></span></h2>
+              <!-- <p>Date of Joining : <span class="C4 mfont"></span> </p> -->
+              <p>Mode of payment : <span class="C4 mfont">{{payout.payout_date}}</span> </p>
+             
+            </div>
+            
+          </div>
+          
+          <div class="recp-com">
+             
+            <h2> <span>JN Health Pharma</span></h2>
+            <span>This receipt is computer generated<br>Signature Not Required</span>
+            
+            
+          </div>
+          
+          <div class="recp-bot bg-light">
+            <h2>Thanks for your business!</h2>
+          </div>
+        </div>  
+</div>
+                </thead>
+                <center><input type="button" class="btn btn-success" onclick="myFunction('{{forloop.counter}}')" id="Print" value="Print"></center>
+                <script type="text/javascript">
+                    
+                    function myFunction(x) {
+                     var printContents = document.getElementById('recp_'+x).innerHTML;
+                     var originalContents = document.body.innerHTML;
+                     
+                
+                     document.body.innerHTML = printContents;
+                
+                     window.print();
+                    
+                
+                     document.body.innerHTML = originalContents;
+                     window.location.assign("/my_receipt")
+                }
+                </script>
+        </table>
+        
+    </div>
+  
+    {% endfor %}
+
+</div>
+
+
+{% endblock body %}
+
+{% block css%}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+    @media only screen and (min-width: 221px) and (max-width: 512px) {
+    #recp{
+    width: 1000px;
+    }
+
+
+}
+
+
+     .newcontainer {
+    background: #080611;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 0px #afafaf;
+    border: solid 1px #9e9e9e26;
+    border-radius: 1px;
+    /* overflow: hidden; */
+}
+#header {
+    text-align: center;
+    margin: 0px 0px;
+    border-radius: 0px;
+    width: 100%;
+    /* padding: 10px 15px; */
+}
+#header {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to top, #3c1053, #ad5389);
+    background: linear-gradient(to top, #3c1053, #ad5389);
+}
+#header {
+
+    background-repeat: repeat-x;
+    text-align: center;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 2px #00000054;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    line-height: 170%;
+    border-bottom: solid 0px #eee;
+}
+
+.reciept {
+    width: 90%;
+    border: 4px solid #ccc;
+    position: relative;
+    margin: 15px auto;
+}
+.recp-head {
+    /* background-color: red; */
+    display: inline-block;
+    width: 100%;
+    padding: 0px;
+}
+.reciept .recp-head .rec-logo {
+    height: 100px;
+    padding: 15px;
+    background-color: white;
+    display: inline-block;
+    margin: 0px;
+    float: left;
+    width: 40%;
+}
+.reciept .recp-head .rec-number {
+    height: 100px;
+    background-image: url("{% static 'images/receipt-bg.png' %}");
+    text-align: end;
+    float: right;
+    background-size: 100% 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: white;
+    width: 40%;
+    padding: 15px;
+}
+.reciept .recp-head .rec-logo img {
+    height: 80px;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.reciept .recp-head .rec-number h3, p {
+    color: white;
+    margin: 0px;
+    /* text-transform: uppercase; */
+    padding: 0px;
+    line-height: 25px;
+}
+.reciept .recp-head .rec-number p {
+    font-size: 14px;
+}
+p {
+    margin-bottom: .65rem;
+    color: #FFEB3B;
+}
+.reciept .recp-mid {
+    background-image: url("{% static 'images/company-bg.png' %}");
+    background-repeat: no-repeat;
+    background-size: 80% 100%;
+}
+.reciept .rec-name {
+    padding: 0px 20px;
+}
+.reciept .rec-name h2 {
+    color: white;
+    font-size: 18px;
+    /* text-transform: uppercase; */
+}
+.recp-content {
+    width: 100%;
+    display: flow-root;
+    padding: 15px;
+}
+.recp-content .recp-detail {
+    width: 45%;
+    float: left;
+    padding-left: 20px;
+}
+.recp-content .recp-detail h3 {
+    color: #cc2320;
+    font-size: 14px;
+    line-height: 15px;
+    /* text-transform: uppercase; */
+    margin: 0px !important;
+}
+.recp-content .recp-detail h2 {
+    color: #000000;
+    font-size: 19px;
+    margin: 0px;
+}
+.recp-content .recp-detail p {
+    color: #444;
+    font-size: 14px;
+}
+.recp-content .recp-amount {
+    width: 45%;
+    float: right;
+    padding-left: 10%;
+}
+.recp-content .recp-amount h3 {
+    color: #cc2320;
+    font-size: 14px;
+    line-height: 15px;
+    /* text-transform: uppercase; */
+    margin: 0px !important;
+}
+.recp-content .recp-amount h2 {
+    color: #000000;
+    font-size: 19px;
+    margin: 0px;
+}
+.recp-content .recp-amount p {
+    color: #444;
+    font-size: 14px;
+}
+.reciept .recp-com {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding: 0px 15px;
+}
+.h2, h2 {
+    /* font-size: 38px; */
+    line-height: 42px;
+    color: NavajoWhite;
+}
+.reciept .recp-bot {
+    background-image: url("{% static 'images/recp-bot.png' %}");
+    background-repeat: no-repeat;
+    background-size: 60% 100%;
+}
+.reciept .recp-bot h2 {
+    color: white;
+    margin: 0px;
+    padding-left: 25px;
+}
+
+
+
+</style>
+{% endblock css%}
+
+{% block js %}
+
+{% endblock js %}

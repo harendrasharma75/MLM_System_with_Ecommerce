@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">-->
+    
+    <title>
+      {% block title %}
+      {{member.full_name}}-Home 
+      {% endblock title %}
+    </title>
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static 'MyAdmin/css/main.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'MyAdmin/css/dashboard.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'MyAdmin1/css/homenew.css' %}" /> -->
+   
+    <link rel="stylesheet" type="text/css" href="{% static 'mymember/css/mymember.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'mymember/css/userdashboard.css' %}" />
+    
+
+
+    <!-- <script src="{% static 'MyAdmin/js/main.js' %}"></script> -->
+   
+    
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+
+{% block css %}
+<style>
+  .page-content{
+    background-color: black;
+  }
+ 
+</style>
+
+{% endblock css %}
+
+
+</head>
+
+<body>
+    <div class="page-wrapper chiller-theme Responsive">
+
+        
+        <a id="show-sidebar" class="btn btn-sm btn-light" style="z-index: 1;">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+        <div class="sidebar-content">
+            <div class="sidebar-brand">
+                <a href="/dashboard"><span style="background-color: #503eff !important; color: rgb(95, 6, 6);; border-radius: 100%;">JN Health Care</span></a>
+                <div id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="sidebar-header">
+            <div class="user-pic">
+                <a href="/dashboard"><img class="img-responsive img-rounded" src="/media/{{member.user_image}}" onerror="this.onerror=null;this.src='/static/images/user.jpg';" alt="{{member.user_image}}"></a>
+            </div>
+            <div class="user-info">
+                <span class="user-name">{{user.first_name}}
+                    <strong>{{ user.last_name}}</strong>
+                </span>
+                <span class="user-role">Level : <strong style="color:gainsboro;">{{member.position}}</strong></span>
+                <span class="user-role">Member Id : <strong id="userId">{{member.member_id}}</strong></span>
+                <span id="status" class="user-statu"><i class="fa fa-circle"></i>
+                <span id="status1" class="d-none d-print-block">{{member.status}}</span>
+                
+                </span>
+            </div>
+            
+        </div>
+    
+        <div class="sidebar-menu">
+            <ul>
+                <li class="header-menu">
+                    <span>General</span>
+                </li>
+               
+
+          <li class="sidebar-dropdown">
+            <a>
+              <i class="fas fa-gem"></i>
+              <span>Account</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/welcome_letter">Welcome Letter
+
+                  </a>
+                </li>
+                <li>
+                  <a href="/my_receipt">My Receipts</a>
+                </li>
+                <li>
+                  <a href="/my_invoice">My Invoice</a>
+                </li>
+                <li>
+                    <a href="/id_card">ID Card</a>
+                  </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a>
+              <i class="fas fa-user-secret"></i>
+              <span>Profile</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/profile">My Profile</a>
+                </li>
+                <li>
+                  <a href="/profile_edit">Edit Profile</a>
+                </li>
+                <li>
+                  <a href="/upload_kyc">Upload KYC Doc</a>
+                </li>
+                <li>
+                  <a href="/edit_bank">Edit Bank A/C</a>
+                </li>
+                <li>
+                  <a href="/password">Change Password</a>
+                </li>
+            
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a>
+              <i class="fa fa-chart-line"></i>
+              <span>Geneology</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                
+                <li>
+                  <a href="/memberview">My Directs</a>
+                </li>
+                <li>
+                  <a href="/downline">My DownLine</a>
+                </li>
+                <!-- <li>
+                  <a href="#">Rewards Achieve</a>
+                </li> -->
+                  <!-- <li>
+                    <a href="#">Resale</a>
+                  </li> -->
+                  <li>
+                    <a href="/products">Product List</a>
+                  </li>
+                  <!-- <li>
+                    <a href="#">Direct Rewards</a>
+                  </li> -->
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-unlock-alt"></i>
+              <span>E-Pin</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Purchase E-Pin</a>
+                </li>
+                <li>
+                  <a href="#">Sale E-Pin</a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+
+          <li class="sidebar-dropdown">
+            <a>
+              <i class="fa fa-shopping-cart"></i>
+              <span>E Shop</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/shop">Shopping Cart</a>
+                </li>
+                <li>
+                  <li>
+                    <a href="/track_order">Track Orders</a>
+                  </li>
+                  <li>
+                  <a href="#">Order Details</a>
+                </li>
+                <!-- <li>
+                    <a href="#">Repurchase Reports</a>
+                  </li>
+                  <li>
+                    <a href="#">Resale Details</a>
+                  </li> -->
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a>
+              <i class="fas fa-rupee-sign"></i>
+              <span>Payments</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/payment_details">Payment Details</a>
+                </li>
+                <li>
+                  <a href="/payout_receipt">Payout Receipts</a>
+                </li>
+                <li>
+                    <a href="/payout_details">Payout Summary</a>
+                  </li>
+                  <li>
+                    <a href="#">Account Summarys</a>
+                  </li>
+              </ul>
+            </div>
+          </li>
+       
+          <li class="header-menu">
+            <span>Extra</span>
+          </li>
+          <!-- <li>
+            <a href="#">
+              <i class="fas fa-rss"></i>
+              <span>Support</span>
+              <span class="badge badge-pill badge-primary">New</span>
+            </a>
+            <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Add Complaint</a>
+                  </li>
+                  <li>
+                    <a href="#">View Complaint</a>
+                  </li>
+                  <li>
+                      <a href="#">Contact Admin</a>
+                    </li>
+                </ul>
+              </div>
+            </li> -->
+         
+          <li>
+            <a href="/calendar">
+              <i class="fa fa-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <i class="fas fa-comments"></i>
+              <span>Contact Us</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <!-- <span class="badge badge-pill badge-warning notification">3</span> -->
+      </a>
+      <!-- <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a> -->
+      <!-- <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a> -->
+      <a href="/logout">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+        </nav>
+        
+  <div class="page-content background-animated ">
+    
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" href="/dashboard">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop">Shop</a>
+        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addnewmember">Add Member</a>
+      </li>
+      <li class="nav-item">
+        <p type="button" class="nav-link" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" style="margin: auto; width: auto;">
+Cart(<span id="cart">0</span>)
+        </p>
+      
+    </li>
+
+    </ul>
+    
+      <!-- </div> -->
+    </div>
+      <main class="page-content">
+        {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show fixed-top" {% endif %} role="alert">
+                        
+           {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+        
+        {% endif %}
+        
+        {% block body %}
+        
+        
+
+
+        
+        <div class="row">
+         
+          <div class="col-lg-6">
+            {% for act, range, nSlides in actives %} 
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{i}}"></li>
+                {% endfor %}
+                
+              </ol>
+                
+              <div class="carousel-inner" style="border-radius: 5%;">
+                <div class="carousel-item active">
+                  {% for active in act %}
+                  <img class="d-block w-100" src="/media/{{ active.slide_image }}" alt="{{ active.slide_heading }}" style="height: 290px;">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ active.slide_heading }}</h5>
+                    <p>{{ active.slide_desc }}</p>
+                  </div>
+                  {% if forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                  {% endif %}
+                  {% endfor %}  
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row"> 
+            <div class="boxback" style="background-color: #6e8ea6;">
+              <a style="text-decoration: none;" href="/memberview">
+              <div class="row">
+              
+                <div class="col-6">
+                  
+                  <h1> 
+                  <span>{{member.total_direct}}</span></h1>
+                  <h5><span id="#">Total Directs</span></h5>
+                </div>
+                <div class="col-6">
+                  <div class="fas fa-globe" style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;">  </div>
+                  
+                </div>
+              </div>
+            </a>
+            </div>
+
+            <div class="boxback" style="background-color: #6b72a5;">
+              <a style="text-decoration: none;" href="/withdraw_request">
+              <div class="row">
+                <div class="col-6">
+                  <h1><span id="#"><span class="currency">₹{{member.ewallet}}</span></span>
+                    </h1>
+                  <h5><span id="#" style="color:#fff !important;">Ewallet Balance</span></h5>
+                </div>
+                <div class="col-6">
+                  <div class="fas fa-briefcase" style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;">  </div>
+                  
+                </div>
+              </div>
+            </a>
+            </div>
+            </div>
+            <div class="row"> 
+            <div class="boxback" style="background-color: #36979f;">
+              <!-- <a style="text-decoration: none;" href="#"> -->
+              <div class="row">
+                <div class="col-6">
+                  <h1><span id="#"><span class="currency">₹{{member.swallet}}</span></span> 
+                    </h1>
+                  <h5><span id="#">Swallet Balance</span></h5>
+                </div>
+                <div class="col-6">
+                  <div class="fas fa-gift" style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;">  </div>
+                </div>
+              </div>
+            <!-- </a> -->
+            </div>
+
+            <div class="boxback" style="background-color: #8e6296;">
+              <a style="text-decoration: none;" href="/downline"">
+              <div class="row">
+                <div class="col-6">
+                  <h1><span id="#">{{member.team_size}}</span> 
+                    </h1>
+                  <h5><span id="#">Team Size</span></h5>
+                </div>
+                <div class="col-6">
+                  <div class="fas fa-sitemap" style="font-size:60px;color:white;text-shadow:2px 2px 4px #000000;">  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+            </div>
+          </div>
+
+        </div> 
+
+
+        <div class="row">                   
+          <div class="col-12 col-md-3">
+            <div class="timeline-content">
+              <span class="year"><span id="#">Self Income</span></span>
+              <div class="content-inner">
+                  <span class="icon"><i class="fa fa-rocket"></i></span>
+                  <h3 class="title"><span id="#" class="c8 currency">₹{{reprchase_income}}</span></h3>   
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="timeline-content">
+              <span class="year"><span id="#">Sponsor Income</span></span>
+              <div class="content-inner">
+                  <span class="icon"><i class="fa fa-rocket"></i></span>
+                  <h3 class="title"><span id="#" class="c8 currency">₹{{sponsored_income}}</span></h3>   
+              </div>
+            </div>
+           </div>
+
+          <div class="col-12 col-md-3">
+            <div class="timeline-content">
+              <span class="year"><span id="#">Level Income</span></span>
+              <div class="content-inner">
+                  <span class="icon"><i class="fa fa-rocket"></i></span>
+                  <h3 class="title"><span id="#" class="c8 currency">₹{{level_income}}</span></h3>    
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="timeline-content">
+              <span class="year"><span id="#">Total Income</span></span>
+              <div class="content-inner">
+                  <span class="icon"><i class="fa fa-rocket"></i></span>
+                  <h3 class="title"><span id="#" class="c8 currency">₹{{total_Earn}}</span></h3>   
+              </div>
+            </div>
+          </div>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-12">
+              <h3 class="progress-title" style="color:blue;">KYC STATUS</h3>
+              <div class="progress-outer">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-danger" style="width:{{kyc_status}}%;">
+                    <span><a href="/upload_kyc"  style="text-decoration: none; color:yellow;"> <span id="#" >{{kyc_status}} % Completed</span></a></span></div>
+                  <!-- <div class="progress-value"> -->
+                    <!-- <span><a href="#"> <span id="#">80 % Completed</span></a></span> -->
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-12">
+              <div class="homexbg">
+             
+                  <div class="row">
+                      <div class="col-12 col-md-3">
+                          <div class="whitex">
+                              <h6><span id="#">Joining Amount</span></h6>
+                              <h2><span id="#" style="color:Red !important;"><span class="currency">₹{{member.join_amount}}</span></span></h2>
+                              <img src="{% static 'mymember/images/currency.png' %}">
+                          </div>
+                      </div>
+                       <div class="col-12 col-md-3">
+                          <div class="whitex">
+                              <h6><span id="#">Rewards</span></h6>
+                              <h2><span id="#" style="color:blue !important;">{{member.position}}</span></h2>
+                              <img src="{% static 'mymember/images/pv.png' %}">
+                          </div>
+                      </div>
+                       <div class="col-12 col-md-3">
+                          <div class="whitex">
+                              <h6><span id="#">Joining Date</span></h6>
+                              <h2><span style="color: red;" id="#">{{member.join_date|date:"d M Y"}}</span></h2>
+                              <img src="{% static 'mymember/images/date.png' %}">
+                          </div>
+                      </div>
+                      <div class="col-12 col-md-3">
+                          <div class="whitex">
+                              <h6><span id="#">Activation Date</span></h6>
+                              <h2><span style="color:green;" id="#">{{member.activation_date|date:"d M Y"}}</span></h2>
+                              <img src="{% static 'mymember/images/graph.png' %}">
+                          </div>
+                      </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="uploadx">
+                          <h1>Upload Your Photo</h1>
+                          <form method="POST" class="post-form" enctype="multipart/form-data" action="dashboard">
+                            {% csrf_token %}
+                          <div class="row">
+                            <div class="col-4 col-lg-4">
+                              
+                                <img id="profileImage" src="/media/{{member.user_image}}" onerror="this.onerror=null;this.src='/static/images/user.jpg';" alt="{{member.first_name}}_pic" width="100" height="100" class="img-rounded">
+                                <input id="imageUpload" type="file" style="display: none;" name="user_image" placeholder="Photo" capture>
+                            </div>
+                            <div class="col-6 col-lg-6">
+                              
+                              <button style="border:none; background-color: transparent;" type="submit" value="Submit"><a class="btn btn-info">Upload</a></button>
+                            </div>
+                            <script>
+                              $("#profileImage").click(function(e) {
+                                $("#imageUpload").click();
+                            });
+                            
+                            function fasterPreview( uploader ) {
+                                if ( uploader.files && uploader.files[0] ){
+                                      $('#profileImage').attr('src', 
+                                          window.URL.createObjectURL(uploader.files[0]) );
+                                }
+                            }
+                            
+                            $("#imageUpload").change(function(){
+                                fasterPreview( this );
+                            });
+                            </script>
+
+                          </div>
+                          </form>
+                        </div>
+                        <div class="welcomex">
+                          <table class="table table-condensed" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                              <tr>
+                                <td>Name</td>
+                                <td> 
+                                  <span id="#" class="c4 mfont" style="font-size:14px; letter-spacing:0px;line-height:20px; ">{{member.first_name}} {{member.last_name}}</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Member ID</td>
+                                <td>  <span id="#S" class="mfont" style="font-size:14px; letter-spacing:0px;">{{member.member_id}}</span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="col-12 col-md-6">
+                      <div class="accountx">
+                        <h1>Sponsor</h1>
+                        <h2><span id="#" style="color:aqua !important;">{{member.sponsor_name}}</span></h2>
+                        <h2><span id="#" style="color:blue !important;">{{member.sponsor_id}}</span></h2>
+                        <img src="{% static 'mymember/images/active.png' %}" alt="account">
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-12 col-md-3"> -->
+                      <!-- <div class="activex">     -->
+                        <!-- <h1><span id="#" class="hfont" style="color:Red;">Inactive ID</span> </h1> -->
+                        <!-- <h3>   -->
+                          <!-- <a id="#" class="c4 mfont " href="#" style="color:Blue;font-size: medium; font-size:20px;"></a> -->
+                          <!-- <a href="#" target="_blank"></a>  -->
+                        <!-- </h3> -->
+                        <!-- <a href="watsapp" id="#1"> <img src="{% static 'mymember/images/whatsapp.png' %}" width="30px"> </a>      -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+                  </div>
+                 
+                 
+  
+               </div>
+          </div>
+        
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="iconss iconban">
+              <div class="row tdbar">
+
+                <div class="col-6 col-lg-3">
+                
+                    <div class="fcpbox2">
+                      <div>
+                        <a href="/dashboard" id="#" style="border-bottom:0px solid #000;">
+                        <div class="fas fa-home" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                      </div>
+                      <a href="/dashboard" style="text-decoration: none;">Member Home</a>
+                    </div>
+                
+                </div>
+                <div class="col-6 col-lg-3">
+                
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/profile" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-user" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/profile" style="text-decoration: none;">Profile</a>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                  
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/memberview" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-sitemap" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/memberview" style="text-decoration: none;">My Directs</a>
+                  </div>
+              
+                </div>
+                <div class="col-6 col-lg-3">
+                    
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/shop" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fa fa-shopping-cart" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/shop" style="text-decoration: none;">E-Shop</a>
+                  </div>
+            
+                </div>
+                <div class="col-6 col-lg-3">
+                      
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/profile_edit" id="#" style="border-bottom:0px solid #000;">
+                      <div class="far fa-address-book" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/profile_edit" style="text-decoration: none;">Edit Profile</a>
+                  </div>
+              
+                </div>
+                <div class="col-6 col-lg-3">
+                        
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="#" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-rupee-sign" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="#" style="text-decoration: none;">Payout Summary</a>
+                  </div>
+              
+                </div>
+                <div class="col-6 col-lg-3">
+                          
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="#" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fa fa-podcast" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="#" style="text-decoration: none;">My Directs</a>
+                  </div>
+              
+                </div>
+                <div class="col-6 col-lg-3">
+                            
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/edit_bank" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fa fa-suitcase" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/edit_bank" style="text-decoration: none;">Edit Bank A/C</a>
+                  </div>
+
+                </div>
+                <div class="col-6 col-lg-3">
+                              
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/password" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-lock" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/password" style="text-decoration: none;">Change Password</a>
+                  </div>
+
+                </div>
+                <!-- <div class="col-6 col-lg-3">
+                              
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="#" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-unlock-alt" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="#" style="text-decoration: none;">Change Txn Psw</a>
+                  </div>
+
+                </div> -->
+                <div class="col-6 col-lg-3">
+                              
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/my_receipt" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-copy" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/my_receipt" style="text-decoration: none;">My Receipt</a>
+                  </div>
+
+                </div>
+                <div class="col-6 col-lg-3">
+                              
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/addnewmember" id="#" style="border-bottom:0px solid #000;">
+                      <div class="far fa-handshake" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/addnewmember" style="text-decoration: none;">Join Now</a>
+                  </div>
+
+                </div>
+                <div class="col-6 col-lg-3">
+                              
+                  <div class="fcpbox2">
+                    <div>
+                      <a href="/logout" id="#" style="border-bottom:0px solid #000;">
+                      <div class="fas fa-power-off" style="font-size:40px;color:white;text-shadow:2px 2px 4px #000000;"></div></a>
+                    </div>
+                    <a href="/logout" style="text-decoration: none;">Signout</a>
+                  </div>
+
+                </div>               
+              </div>
+            </div>
+       
+          </div>
+
+        </div>
+        </div>
+
+
+       
+
+        {% endblock body %}
+
+      
+
+      </main>
+     
+
+
+
+
+
+
+
+</div>
+<!-- page-wrapper -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+<script>
+    jQuery(function ($) {
+
+      $(".sidebar-dropdown > a").click(function() {
+        $(".sidebar-submenu").slideUp(200);
+        if ($(this).parent().hasClass("active")) {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this).parent().removeClass("active");
+        } else {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this).next(".sidebar-submenu").slideDown(200);
+          $(this).parent().addClass("active");
+        }
+      });
+
+      $("#close-sidebar").click(function() {
+        $(".page-wrapper").removeClass("toggled");
+      });
+      $("#show-sidebar").click(function() {
+        $(".page-wrapper").addClass("toggled");
+      });
+    });
+    
+
+    status = document.getElementById('status1').innerHTML
+  
+    if(status == 'Active'){
+      document.getElementById('status').style.color = 'green';
+    } else {
+      document.getElementById('status').style.color = 'red';
+    }
+
+
+</script>
+
+{% block js %}
+<script>
+   $('#popcart').popover('disable');
+</script>
+{% endblock js %}
+<script>
+  cart = JSON.parse(localStorage.getItem('cart'));
+  var sum = 0
+  for(var item in cart){
+        sum = sum + cart[item][0];
+        document.getElementById('cart').innerHTML=sum;
+  }
+</script>
+<script src="{% static 'mymember/js/crousal.js' %}"></script>
+<script src="{% static 'mymember/js/cart.js' %}"></script>
+
+</body>
+
+</html>

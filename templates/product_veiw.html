@@ -1,0 +1,51 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      View-{{product.prod_name}} 
+{% endblock title %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+<div class="row bg-transparent">
+<a href="/shop" class="nav" style="text-decoration:none; width:auto; background: transparent;" ><span class="nav-link" style="width: fit-content;" >Shopping Home</span></a> 
+<a href="/products" class="nav" style="text-decoration:none; width:auto; background: transparent;" ><span class="nav-link" style="width: fit-content;" >Product List</span></a> 
+</div>
+<div class="container bg-light">
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="img-row mx-4">
+                <img src="/media/{{product.prod_image}}" width="260px" height="320px">
+            </div>
+            <div class="row mx-4">
+                <span id="addpr{{product.id}}" class="addpr" style='width: auto;'>
+                <button id="pr{{product.id}}" class="btn btn-primary cart">Buy Now</button></span>
+                <button class="btn btn-primary">Add to Cart</button>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h5>{{product.prod_name}}</h5>
+            <p><b>&#8377; {{product.price}}</b></p>
+            <p>{{product.prod_desc}}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+{% block js %}
+<script>
+    cart = JSON.parse(localStorage.getItem('cart'));
+    var sum = 0
+    for(var item in cart){
+          sum = sum + cart[item][0];
+          document.getElementById('cart').innerHTML=sum;
+    }
+   
+  </script>
+
+{% endblock js %}

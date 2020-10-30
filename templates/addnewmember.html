@@ -1,0 +1,93 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-Add Member 
+{% endblock title %}
+
+{% block body %}
+<div id="contentdiv" style="clear: both;">
+    <div class="table-responsive bg-light">
+        <div class="table_top" id="table_top">
+            <form method="POST" class="post-form" enctype="multipart/form-data" action="/addnewmember">
+                {% csrf_token %}
+                <table style="float:left;" width="100%" align="center" cellpadding="0" cellspacing="0" class="table table-curved table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <div id="header">
+                                    <span>Add New Member</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1">
+                                    <tbody><tr><td align="center">Enter Basic Details <strong>of New Member</strong> </td></tr></tbody>
+                                </table>
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                    <td  width="94%">
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">First Name</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="first_name" id="id_first_name" required maxlength="50" value=""/>
+                                            </div>  
+                                            <label class="col-sm-3 col-form-label">Last Name</label>  
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" name="last_name" id="id_last_name" required maxlength="50" value=""/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Contact</label>  
+                                        
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="contact" id="id_contact"  value="" required maxlength="10" />     
+                                            </div> 
+                                    
+                                            <label class="col-sm-3 col-form-label">Email</label>  
+                                           
+                                            <div class="col-sm-3">  
+                                                <input type="email" class="form-control" name="email" id="id_email"  value="" maxlength="100" />     
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Sponsor Name</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="sponsor_name" id="id_sponsor_name"  value="{{member.full_name}}" maxlength="50" readonly/>     
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 col-form-label">Sponsor ID</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="sponsor_id" id="id_sponsor_name"  value="{{member.member_id}}" maxlength="50" readonly />     
+                                            </div>  
+                                        </div>
+                                    </td>           
+                                </table>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1" >
+                                    <tr>
+                                        <div class="form-group row" >
+                                            <div class="col-sm-7"></div>
+                                            <div class="col-sm-5">
+                                                <button style="border:none;" type="submit" value="Submit">
+                                                    <a class="btn" style="background-color: green;">Submit</a>
+                                                </button>
+                                                
+                                                <a class="btn" style="background-color: red;" href="/dashboard">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </tr> 
+                                    <tr></tr>
+                                </table> 
+                            </td>
+                    
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            
+        </div>   
+    </div>
+</div>
+    
+
+
+{% endblock body %}

@@ -1,0 +1,453 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-Profile 
+{% endblock title %}
+
+{% block body %}
+
+<!-- <main class="page-content"> -->
+  <div id="contentdiv" style="clear: both;">
+    <div class="table-responsive" style="background-color:black;">
+        <div class="table_top" id="table_top">
+      
+                <table style="float:left;border-top-color: black;" width="100%" align="center" cellpadding="0" cellspacing="0" class="table table-curved table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td  class="form-group row" style="background-color:black; border-color: black;">
+                                <div class="col-sm-12" align="center" id="header">
+                                    <div id="header">
+                                        <span class="c1">Profile</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-sm-2" align="center"><a class="btn" href="/{{member.member_id}}/profile_edit">Edit</a></div> -->
+                                
+                            </td>
+                            
+                        </tr>
+    
+                      
+                        <tr>
+                            <td>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1">
+                                    <tbody style="background-color:coral; color: midnightblue;"><tr><td align="center">Basic Details <strong>{{member.first_name}} {{member.last_name}}</strong> </td></tr></tbody>
+                                </table>
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                    <td  width="94%">
+                                        <div class="form-group row">
+                                        <div class="col-sm-12" align="center">  
+                                            <img src="/media/{{member.user_image}}" onerror="this.onerror=null;this.src='/static/images/user.jpg';" alt="{{member.user_image}}" width="150" height="150" class="img-rounded">
+                                        </div> 
+                                    </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Member ID</label>: 
+                                            
+                                            <div class="col-sm-3">{{member.member_id}}
+                                              <!-- <div class="form-control" style="border: none;">{{member.member_id}}</div>  -->
+                                                <!-- <input type="text" class="form-control" name="mem_id" id="id_mem_id" readonly maxlength="20" value="{{member.member_id}}"/>  -->
+                                            </div>
+                                            <label class="col-sm-3 ">Password</label>:  
+                                            
+                                            <div class="col-sm-3">***********
+                            
+                                                <!-- <input type="password" style="border: none; background-color:none;" class="form-control" name="password" id="id_password" required maxlength="50" value="{{member.password}}"/> -->
+                                            </div>  
+                                    
+                                        </div>
+
+                                    
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">First Name</label>:  
+                                            
+                                            <div class="col-sm-3">{{member.first_name}}
+                                                <!-- <input type="text" class="form-control" name="first_name" id="id_first_name" required maxlength="50" value="{{member.first_name}}"/> -->
+                                            </div>  
+                                            <label class="col-sm-3 ">Last Name</label>:  
+                                            
+                                            <div class="col-sm-3">{{member.last_name}}
+                                                <!-- <i type="text" class="form-control" name="last_name" id="id_last_name" required maxlength="50" value="{{member.last_name}}"/> -->
+                                            </div>
+                                        </div>
+                            
+                                        
+                                
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Gender</label>:
+                                              
+                                            <div class="col-sm-3">{{member.gender}}
+                                                <!-- <input type="text" class="form-control" name="gender" id="id_gender"  value="{{member.gender}}" maxlength="50" />      -->
+                                            </div>  
+    
+                                            <label class="col-sm-3 ">Email ID</label>:  
+                                             
+                                            <div class="col-sm-3">{{member.email}}
+                                                <!-- <input type="text" class="form-control" name="email" id="id_email"  value="{{member.email}}" maxlength="50" />      -->
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Contact</label>:  
+                                             
+                                            <div class="col-sm-3">{{member.contact}}
+                                                <!-- <input type="text" class="form-control" name="contact" id="id_contact"  value="{{member.contact}}" required maxlength="10" />      -->
+                                            </div> 
+                                    
+                                            <label class="col-sm-3 ">Alternate Contact</label>: 
+                                            <!--  -->
+                                            <div class="col-sm-3">{{member.alt_contact}}  
+                                                <!-- <input type="text" class="form-control" name="alt_contact" id="id_alt_contact"  value="{{member.alt_contact}}" maxlength="10" />      -->
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Spouse Name</label>: 
+                                             
+                                            <div class="col-sm-3"> {{member.spouse_name}}
+                                                <!-- <input type="text" class="form-control" name="spouse_name" id="id_spouse_name"  value="{{member.spouse_name}}" maxlength="50" />      -->
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 ">Father Name</label>:  
+                                             
+                                            <div class="col-sm-3">{{member.father_name}} 
+                                                <!-- <input type="text" class="form-control" name="father_name" id="id_father_name"  value="{{member.father_name}}" maxlength="50" />      -->
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Date Of Birth</label>: 
+                                             
+                                            <div class="col-sm-3">{{member.date_of_birth|date:'d M Y'}} 
+                                                <!-- <input type="text" class="form-control"  name="date_of_birth" id="id_date_of_birth" value="{{member.date_of_birth|date:'d M Y'}}" />      -->
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Address</label>:
+                                               
+                                            <div class="col-sm-3" > {{member.address}} 
+                                                <!-- <textarea type="text" style="resize:none" rows="3" cols="50" class="form-control" name="address" id="id_address"  value="{{member.address}}" maxlength="200">{{member.address}} </textarea>     -->
+                                            </div>  
+                                        </div>
+                                        
+                                        <div class="form-group row"> 
+                                            <label class="col-sm-3 ">City</label>:  
+                                             
+                                            <div class="col-sm-3"> {{member.city}}
+                                                <!-- <input type="text" class="form-control" name="city" id="id_city"  value="{{member.city}}" maxlength="50" />      -->
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 ">PIN</label>:  
+                                            
+                                            <div class="col-sm-3"> {{member.pincode}}
+                                                <!-- <input type="text" class="form-control" name="pincode" id="id_pincode"  value="{{member.pincode}}" maxlength="50" />      -->
+                                            </div>  
+                                        </div>
+                                        
+                                        <div class="form-group row"> 
+                                            <label class="col-sm-3 ">State</label>: 
+                                             
+                                            <div class="col-sm-3"> {{member.state}} 
+                                                <!-- <input type="text" class="form-control" name="state" id="id_state"  value="{{member.state}}" maxlength="50" />      -->
+                                            </div> 
+
+                                            <label class="col-sm-3 ">Country</label>: 
+                                              
+                                            <div class="col-sm-3">{{member.country}}  
+                                                <!-- <input type="text" class="form-control" name="country" id="id_country"  value="{{member.country}}" maxlength="50" />      -->
+                                            </div>  
+                                        </div>                                    
+                                    </td>           
+                                </table>
+
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1" align="center">
+                                    <tbody style="background-color:coral; color: midnightblue;">
+                                        <tr>
+                                            <td align="center">
+                                                <span><span>&nbsp; <strong>&nbsp;
+                                                <span>Bank Information</span></strong></span></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                    <td  width="94%">
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Account Number</label>:
+                                            <!--     -->
+                                            <div class="col-sm-3">{{member.account_number}}  
+                                                <!-- <input type="text" class="form-control" name="account_number" id="id_account_number"  value="{{member.account_number}}" maxlength="50" />      -->
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 ">Account Holder Name</label>:
+                                            <!--  -->
+                                            <div class="col-sm-3">{{member.account_holder_name}}  
+                                                <!-- <input type="text" class="form-control" name="account_holder_name" id="id_account_holder_name"  value="{{member.account_holder_name}}" maxlength="150" />      -->
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">Bank Name</label>:
+                                              
+                                            <div class="col-sm-3">{{member.bank_name}}  
+                                                <!-- <input type="text" class="form-control" name="bank_name" id="id_bank_name"  value="{{member.bank_name}}" maxlength="50" />      -->
+                                            </div>  
+        
+                                            <label class="col-sm-3 ">Bank Branch</label>:
+                                              
+                                            <div class="col-sm-3">{{member.branch_name}}
+                                                <!-- <input type="text" class="form-control" name="branch_name" id="id_branch_name"  value="{{member.branch_name}}" maxlength="50" />      -->
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">IFSC Code</label>:
+                                              
+                                            <div class="col-sm-3">{{member.ifsc_code}}  
+                                                <!-- <input type="text" class="form-control" name="ifsc_code" id="id_ifsc_code"  value="{{member.ifsc_code}}" maxlength="50" />      -->
+                                            </div>  
+
+                                            <label class="col-sm-3 ">Branch City</label>:
+                                              
+                                            <div class="col-sm-3">{{member.branch_city}}  
+                                                <!-- <input type="text" class="form-control" name="branch_city" id="id_branch_city"  value="{{member.branch_city}}" maxlength="50" />      -->
+                                            </div> 
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 ">PAN Number</label>:
+                                              
+                                            <div class="col-sm-3">{{member.pan_number}}
+                                                <!-- <input type="text" class="form-control" name="pan_number" id="id_pan_number"  value="{{member.pan_number}}" maxlength="10" />      -->
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 ">Adhaar Number</label>:
+                                              
+                                            <div class="col-sm-3">{{member.adhaar_number}}  
+                                                <!-- <input type="text" class="form-control" name="adhaar_number" id="id_adhaar_number"  value="{{member.adhaar_number}}" maxlength="10" />      -->
+                                            </div>  
+                                        </div>
+
+                                        
+
+
+                                    </td>
+                
+                                </table>
+        
+                
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1">
+                                    <tbody style="background-color:coral; color: midnightblue;"><tr>
+                                        <td align="center">
+                                            <span><span>&nbsp; <strong>&nbsp;
+                                                <span>Nominee Information</span></strong></span></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                <td  width="94%">
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Nominee Name</label>: 
+                                         
+                                        <div class="col-sm-3">{{member.nominee_name}}
+                                            <!-- <input type="text" class="form-control" name="nominee_name" id="id_nominee_name" maxlength="50" value="{{member.nominee_name}}"/> -->
+                                        </div>  
+                                
+                                        <label class="col-sm-3 ">Nominee Relation</label>:
+                                          
+                                        <div class="col-sm-3">{{member.nominee_relation}}  
+                                            <!-- <input type="text" class="form-control" name="nominee_relation" id="id_nominee_relation" maxlength="50" value="{{member.nominee_relation}}"/> -->
+                                        </div>  
+                                    </div>
+
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Nominee Date Of Birth</label>:
+                                        <!--    -->
+                                        <div class="col-sm-3">{{member.nominee_dob|date:'d M Y'}} 
+                                            <!-- <input type="text" class="form-control" name="nominee_dob" id="id_nominee_dob" value="{{member.nominee_dob|date:'d M Y'}}" />      -->
+                                        </div>  
+                                    </div>
+
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Nominee Address</label>:
+                                          
+                                        <div class="col-sm-3">{{member.nominee_address}}  
+                                            <!-- <textarea type="text" style="resize:none" rows="4" cols="50" class="form-control" name="nominee_address" id="id_nominee_address"  value="{{member.nominee_address}}" maxlength="200">{{member.nominee_address}}</textarea>     -->
+                                        </div>  
+                                    </div>
+
+                                </td>
+                                </table>
+
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1">
+                                    <tbody style="background-color:coral; color: midnightblue;"><tr>
+                                        <td align="center">
+                                            <span><span>&nbsp; <strong>&nbsp;
+                                                <span>Membership Details</span></strong></span></span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                <td  width="94%">
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Sponsor Name</label>:
+                                          
+                                        <div class="col-sm-3">{{member.sponsor_name}} 
+                                            <!-- <input type="text" class="form-control" name="sponsor_name" id="id_sponsor_name" maxlength="50" value="{{member.sponsor_name}}"/> -->
+                                        </div>  
+                                
+                                        <label class="col-sm-3 ">Sponsor ID</label>:
+                                          
+                                        <div class="col-sm-3">{{member.sponsor_id}}  
+                                            <!-- <input type="text" class="form-control" name="sponsor_id" id="id_sponsor_id" maxlength="50" value="{{member.sponsor_id}}"/> -->
+                                        </div>  
+                                    </div>
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Joining Date</label>:
+                                          
+                                        <div class="col-sm-3">{{member.join_date|date:'d M Y'}} 
+                                            <!-- <input type="text" class="form-control" name="join_date" id="id_join_date" readonly value="{{member.join_date|date:'d M Y'}}" />      -->
+                                        </div>  
+
+                                        <label class="col-sm-3 ">Membership Staus</label>:
+                                        <!--    -->
+                                        <div class="col-sm-3">{{member.status}}
+                                            <!-- <input type="text" class="form-control" name="status" id="id_status" maxlength="50" value="{{member.status}}"/> -->
+                                    
+                                        </div>  
+                                    </div>
+
+                                    <div class="form-group row">  
+                                        <label class="col-sm-3 ">Activation Date</label>:
+                                          
+                                        <div class="col-sm-3">{{member.activation_date|date:'d M Y'}} 
+                                            <!-- <input type="text" class="form-control" name="activation_date" id="id_activation_date" value="{{member.activation_date|date:'d M Y'}}" />      -->
+                                        </div>  
+                                        <label class="col-sm-3 ">Transaction Password</label>: 
+                                        <!--   -->
+                                        <div class="col-sm-3"> {{member.tx_pass}} 
+                                            <!-- <input type="text" class="form-control" name="tx_pass" id="id_tx_pass" maxlength="50" value="{{member.tx_pass}}"/> -->
+                                        </div>
+    
+                                    </div>
+
+                
+
+                                </td>
+                                </table>
+
+                                <!-- <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1" >
+                                    <tr>
+                                        <div class="form-group row" >
+                                            <div class="col-sm-9"></div>
+                                            <div class="col-sm-3">
+                                                <button type="submit" value="Submit">Update</button>
+                                        
+                                                <button type="cancel" onclick="goBack()" value="Cancel">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </tr> 
+                                    <tr></tr>
+                                </table>  -->
+
+                                
+                            </td>
+                    
+                        </tr>
+                        
+                    </tbody>
+                    <tr>
+                        <td style="background-color:coral; color: midnightblue;" class="form-group row">
+                           
+                            <div class="col-sm-12" align="center"><a class="btn" href="/profile_edit">Edit</a></div>
+                            
+                        </td>
+                        
+                    </tr>
+                </table>
+            </form>
+        </div>   
+    </div>
+</div>
+<!-- </main> -->
+{% endblock body %}
+
+
+
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+<style>
+    #contentdiv{
+        margin: -40px;
+    }
+    label.col-sm-3,.col-sm-3 {
+    margin-right: -60px;
+    margin-left: 30px;
+    }
+}
+#header {
+    text-align: center;
+    margin: 0px 0px;
+    border-radius: 0px;
+    width: 100%;
+    padding: 10px 15px;
+}
+#header {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to top, #3c1053, #ad5389);
+    background: linear-gradient(to top, #3c1053, #ad5389);
+}
+#header {
+
+    background-repeat: repeat-x;
+    text-align: center;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 2px #00000054;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    line-height: 170%;
+    border-bottom: solid 0px #eee;
+}
+
+a.btn {
+    width: min-content;
+    background-color: aquamarine;
+    border-radius: 50px;
+}
+a.btn:hover {
+    
+    background-color: yellow;
+    color: black;;
+}
+
+</style>
+
+{% endblock css %}
+
+
+{% block js %}
+<script>
+
+$(document).ready(function() {
+    $("input").attr("readonly", true);
+    $("textarea").attr("readonly", true);
+    $(':input[readonly]').css({'background-color':'transparent'});
+});
+
+function goBack() {
+  window.history.back();
+}
+
+// document.getElementsbyId("id_first_name").disabled=true
+
+  </script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+{% endblock js %}

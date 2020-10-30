@@ -1,0 +1,117 @@
+{% extends 'myAdmin/admin_index.html' %}
+
+
+
+{% block body %}
+
+<div class="col-md-12 bg-light">    
+
+            <div class="bg-primary"><center><h4><b>This Month Sales Summary</b></h4></center></div>
+            <!-- <span><a href="/{{ user.username }}/addnewmember" class="btn btn-primary float-right">Add New Member</a></span>   -->
+            <div class="table-responsive">
+                <table id="bootstrapdatatable" class="table table-striped table-bordere" width="100%">
+                    <thead>
+                        
+                        <th style="text-align:center">SL No.</th>
+                        
+                        <th style="text-align:center">Member ID</th>
+
+                        <th style="text-align:center">Member Name</th>
+                        <th style="text-align:center">Reason</th>
+                        <th style="text-align:center">Amount</th>
+                        
+                        <th style="text-align:center">Date and Time</th>
+                    </thead>
+                    <tbody>
+                    {% for balance in this_month %}  
+                        <tr>  
+                            <td style="text-align:center">{{ forloop.counter }}</td> 
+                            
+                            <td style="text-align:center">{{ balance.member_id }}</td> 
+                            <td style="text-align:center">{{ balance.full_name }}</td>
+                            <td style="text-align:center">{{ balance.payment_reason }}</td>
+                            <td style="text-align:center">{{ balance.payment_amount }}</td>  
+                              
+                            <td style="text-align:center">{{ balance.payment_time|date:'j-M-Y g:i:s A' }}</td>  
+                        </tr>  
+                    {% endfor %}
+                    </tbody>
+                    <tbody>
+                        <tr>  
+                            <td style="text-align:center"></td> 
+                            <td style="text-align:center"></td>  
+                            <td style="text-align:center"></td>  
+                    
+                            <td style="text-align:right"><b>Total :</td>  
+                            <td style="text-align:center"><b>{{sale.payment_amount__sum}}</td>  
+                            <td style="text-align:center"></td>  
+                        </tr>
+                    </tbody>
+     
+                </table>
+
+            </div>
+</div>
+
+
+{% endblock body %}
+
+{% block css %}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<style>
+  
+    #contentdiv{
+        background-color: white;
+        margin-top: -15px;
+        
+    }
+
+    #header{
+        font-weight: 750;
+        color: rgb(5, 5, 116);
+    }
+
+    select.form-control-sm:not([size]):not([multiple]) {
+    height: calc(2.8125rem + 2px);
+}
+label {
+    display: inline-flex;
+    
+}
+
+thead {
+    background: yellowgreen;
+
+}
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3.25rem + 2px);
+}
+.btn{
+    width: 100px;
+}
+td {
+    min-width: 100px;
+}
+</style>
+{% endblock css %}
+
+{% block js%}
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#bootstrapdatatable').DataTable({     
+          "aLengthMenu": [[5, 10, 20, 50,100, -1], [5, 10, 20, 50,100, "All"]],
+            "iDisplayLength": 20
+           } 
+        );
+    } );
+    
+
+</script>
+{% endblock js %} 

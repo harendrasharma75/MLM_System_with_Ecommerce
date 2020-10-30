@@ -1,0 +1,195 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-Invoice 
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="newcontainer"> 
+    <div class="col-sm-12" align="center" id="header">
+        <div id="header">
+            <span class="c1">My Invoice</span>
+        </div>
+    </div>
+    {% for sum,data in datas %}
+    {% for dates, desc in data.items %}
+    <div class="table-responsive bg-light"> 
+    <div id="recp_{{forloop.counter}}">
+       <center><div class="col-11">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="">
+                    <h1>JN Health Pharma</h1>                          
+                </div>
+            </div>
+            <div class="row col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-12 col-sm-12 col-md-6 text-left">
+                    <div class="float-left">
+                        <h2>{{member.full_name}}</h2>
+                        <p><b>Member ID :</b>{{member.member_id}}</p>
+                        <p><b>Mobile :</b>{{member.contact}}</p>
+                        <p><b>Address :</b><span>{{member.address}}, {{member.city}}, {{member.state}}-{{member.pincode}}, {{member.country}} </span></p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="float-right">
+                        <h3>Invoice</h3>
+                        <p>No. <span style="color:blue;">{{invoice_no}}{{dates|date:'yymd'}}</span></p>
+                        <p>Date :  <span style="color:blue;">{{dates|date:'d M Y'}}</span> </p>
+                    </div>
+                </div>
+                          
+            </div>
+        
+                            
+            <div>
+
+                <table class="table table-bordered">
+                    <thead class="bg-dark">
+                        <tr>
+                            <th class="col-md-1">SL No.</th>
+                            <th class="col-md-8">Descriptions</th>
+                            <th class="col-md-3">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for val in desc %}
+                        
+                        <tr>
+                            <td class="col-md-1">{{forloop.counter}}</td>
+                            <td class="col-md-8">{{val.0}}</td>
+                            <td class="col-md-3">&#8377;{{val.1}}</td>
+                        </tr>
+                      
+                      {% endfor %}
+                        <tr>
+                        <td class="col-md-1"></td>
+                        <td class="text-right">
+                            <p><strong>Total Amount: </strong></p>
+                            <p><strong>Tax Deduction: </strong></p>
+                        </td>
+                       
+                        <td>
+                            <p><strong><i class="fa fa-inr">&#8377;{{sum}}</i></strong></p>
+                            <p><strong><i class="fa fa-inr"></i></strong></p>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><h2><strong></strong></h2></td>
+                            <td class="text-right"><h2><strong>Total: </strong></h2></td>
+                            <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i>&#8377;{{sum}}/-</strong></h2></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+                            
+            <div class="row">
+                               
+                <div class="col-xs-6 col-sm-6 col-md-6 text-left">
+                    <div class="float-left">
+                        <p><b>Date : </b>{{dates|date:'d M Y'}}</p>
+                        <h5 style="color: rgb(140, 140, 140);">Thank you for your business!</h5>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <div class="float-right">
+                        <h2> <span>JN Health Pharma</span></h2>
+                        <span>This receipt is computer generated<br>Signature Not Required</span>
+                    </div>
+                </div>
+            </div>                  
+        </div>
+    </div>
+        </center>  
+    </div>    
+
+     
+    <center><input type="button" class="btn btn-success" onclick="myFunction('{{forloop.counter}}')" id="Print" value="Print"></center>
+            <script type="text/javascript">
+                
+                function myFunction(x) {
+                    var printContents = document.getElementById('recp_'+x).innerHTML;
+                    var originalContents = document.body.innerHTML;
+                    
+            
+                    document.body.innerHTML = printContents;
+            
+                    window.print();
+                
+            
+                    document.body.innerHTML = originalContents;
+                    window.location.assign("/my_invoice")
+                }
+            </script>
+    
+     {% endfor %}   
+     {% endfor %}   
+</div>
+  
+
+
+
+
+
+{% endblock body %}
+
+{% block css%}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<style>
+    @media only screen and (min-width: 221px) and (max-width: 512px) {
+    #recp{
+    width: 1000px;
+    }
+
+
+}
+
+
+     .newcontainer {
+    background: #080611;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 0px #afafaf;
+    border: solid 1px #9e9e9e26;
+    border-radius: 1px;
+    /* overflow: hidden; */
+}
+#header {
+    text-align: center;
+    margin: 0px 0px;
+    border-radius: 0px;
+    width: 100%;
+    /* padding: 10px 15px; */
+}
+#header {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to top, #3c1053, #ad5389);
+    background: linear-gradient(to top, #3c1053, #ad5389);
+}
+#header {
+
+    background-repeat: repeat-x;
+    text-align: center;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 2px #00000054;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    line-height: 170%;
+    border-bottom: solid 0px #eee;
+}
+
+
+
+
+
+</style>
+{% endblock css%}
+
+{% block js %}
+
+{% endblock js %}

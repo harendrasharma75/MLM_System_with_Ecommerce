@@ -1,0 +1,214 @@
+{% extends 'myAdmin/admin_index.html' %}
+
+
+
+
+{% block body %}
+
+<div id="contentdiv" style="clear: both;">
+  <div class="table-responsive">
+    <div class="table_top">
+      <table style="width: 100%; float:left;" align="center" cellpadding="0" cellspacing="0" class="table table-curved table-bordered table-striped">
+        <tbody>
+          <tr>
+            <td align="center" colspan="3">
+                <div id="header">
+                    <span class="c1">Member </span>&nbsp;<span class="c1a">View</span>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div id="member_view" style="width:100%;overflow:scroll;">
+          <div class="table-responsive">
+            <table id="bootstrapdatatable" class="table table-striped table-bordered" style="word-wrap: inherit; width: 100%">
+              <thead>
+                <th>Sl No.</th>
+                <th>Member Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Alt Contact</th>
+                <th>Gender</th>
+                <th>Father Name</th>
+                <th>Spouse Name</th>
+                <!-- <th>Relation</th> -->
+                <th>Date of Birth</th>
+                <th>Nominee Name</th>
+                <th>Nominee Relation</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Pin Code</th>
+                <th>Country</th>
+                <th>Sponsor Name</th>
+                <th>Sponsor Id</th>
+                <th>Adhaar Number</th>
+                <th>PAN Number</th>
+                <th>Account Number</th>
+                <th>Account Holder Name</th>
+                <th>Bank Name</th>
+                <th>Branch Name</th>
+                <th>IFSC Code</th>
+                <th>Documents Submit</th>
+                <th>Position</th>
+                <th>Joining Amount</th>
+                <th>Joining Date</th>
+                <th>Activation Date</th>
+                <th>Password</th>
+                <th>Transaction Password</th>
+                <th>Member Image</th>
+                <th>Status</th>
+                <th>Edit</th>
+              </thead>
+              <tbody>
+                {% for member in members %}  
+                <tr>  
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ member.member_id }}</td>  
+                  <td>{{ member.first_name }}</td> 
+                  <td>{{ member.last_name }}</td> 
+                  <td>{{ member.email }}</td> 
+                  <td>{{ member.contact }}</td> 
+                  <td>{{ member.alt_contact }}</td> 
+                  <td>{{ member.gender }}</td> 
+                  <td>{{ member.father_name }}</td> 
+                  <td>{{ member.spouse_name }}</td> 
+                  <!-- <td>{{ member.spouse_relation }}</td>  -->
+                  <td>{{ member.date_of_birth }}</td> 
+                  <td>{{ member.nominee_name }}</td> 
+                  <td>{{ member.nominee_relation }}</td> 
+                  <td>{{ member.address }}</td> 
+                  <td>{{ member.city }}</td> 
+                  <td>{{ member.state }}</td> 
+                  <td>{{ member.pincode }}</td> 
+                  <td>{{ member.country }}</td> 
+                  <td>{{ member.sponsor_name }}</td> 
+                  <td>{{ member.sponsor_id }}</td> 
+                  <td>{{ member.adhaar_number }}</td> 
+                  <td>{{ member.pan_number }}</td> 
+                  <td>{{ member.account_number }}</td> 
+                  <td>{{ member.account_holder_name }}</td> 
+                  <td>{{ member.bank_name }}</td> 
+                  <td>{{ member.branch_name }}</td> 
+                  <td>{{ member.ifsc_code }}</td> 
+                  <td>{{ member.document }}</td> 
+                  <td>{{ member.position_name }}</td> 
+                  <td>{{ member.join_amount }}</td> 
+                  <td>{{ member.join_date }}</td> 
+                  <td>{{ member.activation_date }}</td> 
+                  <td>{{ member.password }}</td> 
+                  <td>{{ member.tx_pass }}</td> 
+                  <td>{{ member.user_image }}</td> 
+                  <td> <span id="id_sta{{ member.member_id }}"><i class="fas fa-user" style='font-size:24px'></i></span>
+                    <span id="id_status{{ member.member_id }}" class="d-none d-print-block">{{ member.status }}</span>
+                  </td>
+                  <script>
+                    var x = document.getElementById("id_status{{ member.member_id }}").innerHTML;
+                    console.log(x)
+                    if(x=='Active'){
+                       document.getElementById("id_sta{{ member.member_id }}").style.color='green';
+                    } else {
+                       document.getElementById("id_sta{{ member.member_id }}").style.color='red';
+                    }
+                </script>
+                  
+                  <td>
+                      <a href="/myAdmin/edit_{{ member.member_id }}" class="btn btn-primary btn-xs" data-title="Edit"  >
+                        <span class="glyphicon glyphicon-pencil"></span>
+                      </a>
+                   
+                  </td>
+                    
+                </tr>  
+                {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+         
+  </div>
+</div>
+        
+{% endblock body %}
+
+
+
+{% block css %}
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<style>
+    body{
+        background-color: rgb(7, 1, 36);
+    }
+    #contentdiv{
+        background-color: white;
+        margin-top: -15px;
+        
+    }
+
+    #header{
+        font-weight: 750;
+        color: darkblue;
+    }
+
+    select.form-control-sm:not([size]):not([multiple]) {
+    height: calc(2.8125rem + 2px);
+}
+label {
+    display: inline-flex;
+    
+}
+
+#bootstrapdatatable {
+  /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#bootstrapdatatable td, #bootstrapdatatable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#bootstrapdatatable tr:nth-child(even){background-color: #f2f2f2;}
+
+#bootstrapdatatable tr:hover {background-color: #ddd;}
+
+#bootstrapdatatable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+{% endblock css %}
+
+
+
+{% block js%}
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#bootstrapdatatable').DataTable({     
+          "aLengthMenu": [[5, 10, 20, 50,100, -1], [5, 10, 20, 50,100, "All"]],
+            "iDisplayLength":5
+           } 
+        );
+    } );
+</script>
+<script>
+
+</script>
+
+{% endblock js %}

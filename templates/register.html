@@ -1,0 +1,251 @@
+{% extends 'index.html'%}
+
+
+{% block content %}
+
+<div class="container">
+   
+    
+    <center><div class="">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form" method="POST" action="/new_user">
+                {% csrf_token %}
+                <h2>Welcome to New Journey of Life <small></small></h2>
+                <hr class="colorgraph">
+                
+                <div class="row"> 
+                    <div class="col-xs-12 col-sm-6 col-md-6">  
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="sponsor_id" id="id_sponsor_id" placeholder="Sponsor ID"  value="{{search_id}}" maxlength="50" tabindex="0" />    
+                        </div> 
+                    </div>  
+                    <div class="col-xs-12 col-sm-6 col-md-6">  
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="sponsor_name" id="id_sponsor_name" placeholder="Sponsor Name"  value="{{search.full_name}}" maxlength="50" readonly/>     
+                        </div>  
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-6 col-md-6">
+                        <label for="myCheck"> </label> 
+                            <input type="checkbox" id="myCheck" onclick="myFunction()"/>&nbsp;Don't have Sponsor
+
+                    </div>
+                 </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="contact" id="contact" class="form-control input-lg" placeholder="contact" tabindex="3" required maxlength="10" />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4"/>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3">
+                        <span class="button-checkbox" id="id_check">
+                            <h6>I Agree
+                            <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1" required /></h6>
+                        </span>
+                    </div>
+                    <div class="col-xs-8 col-sm-9 col-md-9" id="tc">
+                        By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> 
+                    </div>
+                </div>
+                
+                <hr class="colorgraph">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6" id="reg">
+                        <div class="form-group">
+                            <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                        </div> 
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <a href="login" class="btn btn-success btn-block btn-lg">Log In</a>
+                        </div>
+                        </div>
+                </div>
+            </form>
+        </div></center>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+                </div>
+                <div class="modal-body">
+                                <p> Welcome to Step by Step	
+                            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    </div>
+
+   
+    
+    {% endblock content %}
+    {% block body %}
+{% endblock body %}
+
+
+{% block css %}
+
+<style>
+
+    
+body, html {
+    height: 150vh;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(3, 121, 115), rgb(19, 3, 112));
+}
+
+header{
+    width: 100%;
+    height: 150vh;
+    background: url('https://images.pexels.com/photos/1345085/pexels-photo-1345085.jpeg?auto=compress&cs=tinysrgb&h=650&w=940') no-repeat center center;
+    background-size: cover;
+    /*background: linear-gradient(#503eff, #08d4fd);*/
+   /* background: linear-gradient(0deg, #08d4fd 0%, #503eff 100%);*/
+    /*background: linear-gradient(#e66465, #9198e5);*/
+    position: relative;
+    color: #ffffff;
+    overflow: hidden;
+}
+.container {
+    
+    padding: 40px 40px;
+    margin-top: 80px;
+   
+}
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #ebedee;
+  border-radius: 10px;
+ 
+}
+
+.row{
+    font-size: 14px;
+}
+.col-md-9{
+    font-size: 12px;
+}
+
+
+</style>
+
+{% endblock css %}
+
+{% block js %}
+<script>
+    
+    
+    var sn = document.getElementById("id_sponsor_name")
+    var fn = document.getElementById("first_name")
+    var ln = document.getElementById("last_name")
+    var cn = document.getElementById("contact")
+    var em = document.getElementById("email")
+    var pw = document.getElementById("password")
+    var pwc = document.getElementById("password_confirmation")
+    var idc = document.getElementById("id_check")
+    var tc = document.getElementById("tc")
+    var reg = document.getElementById("reg")
+    var mysponsor = document.getElementById('id_sponsor_id')
+
+    if(sn.value == 0){
+        fn.style.display="none";
+        ln.style.display="none";
+        cn.style.display="none";
+        em.style.display="none";
+        pw.style.display="none";
+        pwc.style.display="none";
+        idc.style.display="none";
+        tc.style.display="none";
+    };
+
+    function myFunction() {
+      var checkBox = document.getElementById("myCheck");
+      var sn = document.getElementById("id_sponsor_name");
+      if (checkBox.checked == true){
+        sn.value = "Starter";
+        fn.style.display="block";
+        ln.style.display="block";
+        cn.style.display="block";
+        em.style.display="block";
+        pw.style.display="block";
+        pwc.style.display="block";
+        idc.style.display="block";
+        tc.style.display="block";
+        mysponsor.value=""
+        mysponsor.readOnly=true
+      } else {
+         sn.value = "";
+         fn.style.display="none";
+        ln.style.display="none";
+        cn.style.display="none";
+        em.style.display="none";
+        pw.style.display="none";
+        pwc.style.display="none";
+        idc.style.display="none";
+        tc.style.display="none";
+        mysponsor.readOnly=false
+      }
+    }
+ 
+    mysponsor.onkeyup = function() {
+        if(mysponsor.value==0){
+            window.location = "/new_user"
+        } else {
+            if(mysponsor.value.length == 9){
+                window.location = "/new_user_sponsor_" + document.getElementById('id_sponsor_id').value;
+            }else{
+                sn.value = "";
+                fn.style.display="none";
+                ln.style.display="none";
+                cn.style.display="none";
+                em.style.display="none";
+                pw.style.display="none";
+                pwc.style.display="none";
+                idc.style.display="none";
+                tc.style.display="none";
+            }
+    }
+          
+    }
+
+   
+</script>
+<script>
+    
+    </script>
+{% endblock js %}

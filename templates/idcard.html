@@ -1,0 +1,225 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-ID Card
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div class="newcontainer"> 
+
+            <div class="col-sm-12" align="center" id="header">
+                <div id="header">
+                    <span class="c1">ID Card</span>
+                </div>
+            </div>
+            
+
+    <div>
+	 
+    
+    <div id="email-sign"> 
+     <div class="email-signature col-sm-12 col-md-6">
+
+                    <div class="signature-details col-sm-12 col-md-12">Company Logo
+                        <img src="user_photos/70174_1020051404.jpg" style="border-width:0px;">
+                        <h2 class="title">JN Health Care</h2>
+                    </div>
+                    <div class="row col-12">
+                    <div class="signature-img col-4 bg-light">
+                        <img src="/media/{{member.user_image}}" style="border-width:0px;" width="125px" height="135px">
+                    </div>
+                   
+                    <ul class="signature-content col-8">
+                        <li class="col-12"><span>Distributor Name</span> : <span>{{member.full_name}}</span></li>
+                        <li class="col-12"><span>Distributor ID</span> : <span>{{member.member_id}}</span></li>
+                        <li class="col-12"><span>Mobile No</span> : <span>{{member.contact}}</span></li>
+                        <li class="col-12"><span>Address</span> : <span>{{member.address}}</span></li>
+                      
+                        <li class="col-12"><span>City</span> : <span>{{member.city}}</span></li>
+                        <li class="col-12"><span>State</span> : <span>{{member.state}}</span></li>
+                        <li class="col-12"><span>PIN</span> : <span>{{member.pincode}}</span></li>
+                    </ul>
+                </div>
+                    <span class="signature-web">www.<span><a href="http://123.com" style="color:#0000ff;" target="_blank">123.com</a></span></span>
+                </div>   
+    </div>
+    
+    <center><input type="button" class="btn btn-success" onclick="myFunction()" id="btnPrint" value="Print"></center>
+    </div>
+</div>
+
+            
+
+{% endblock body %}
+
+{% block css%}
+<style>
+    .col-8{
+        padding-right: 0;
+    }
+   .newcontainer {
+    background: #080611;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 0px #afafaf;
+    border: solid 1px #9e9e9e26;
+    border-radius: 1px;
+    /* overflow: hidden; */
+}
+#header {
+    text-align: center;
+    margin: 0px 0px;
+    border-radius: 0px;
+    width: 100%;
+    /* padding: 10px 15px; */
+}
+#header {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to top, #3c1053, #ad5389);
+    background: linear-gradient(to top, #3c1053, #ad5389);
+}
+#header {
+
+    background-repeat: repeat-x;
+    text-align: center;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-shadow: 0px 2px 2px #00000054;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    line-height: 170%;
+    border-bottom: solid 0px #eee;
+}
+.email-signature {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(to right,#ffffff,#ffffff);
+    position: relative;
+    /* width: 50%; */
+    border: 1px solid #ccc;
+    margin: 15px auto;
+}
+.email-signature .signature-details {
+    color: var(--white);
+    background-color: rgb(10, 110, 144);
+    /* padding: 12px 12px 12px 12px; */
+    display: inline-flex;
+    width: 100%;
+}
+.email-signature .signature-details img {
+    /* height: 34px; */
+    display: inline-block;
+    position: relative;
+    margin: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.email-signature .title {
+    font-size: 14px;
+    font-weight: 600;
+    /* display: none; */
+    /* text-transform: uppercase; */
+    margin: 0;
+}
+.h2, h2 {
+    /* font-size: 38px; */
+    line-height: 42px;
+    color: NavajoWhite;
+}
+.email-signature .signature-img {
+    background-color: #f1f1f1;
+    padding: 5px;
+   
+}
+
+.email-signature .signature-content {
+    /* padding: 20px 20px 15px 161px; */
+    margin: 0;
+    list-style: none;
+}
+.email-signature .signature-content li {
+    
+    font-size: 13px;
+   
+    vertical-align: text-top;
+    width: fit-content;
+    position: relative !important;
+    vertical-align: top;
+    line-height: 20px;
+
+}
+.email-signature .signature-content li span {
+    display: inline-block;
+    width: 110px;
+    vertical-align: top;
+}
+
+.email-signature .signature-web {
+    color: var(--white);
+    background-color: #f44336;
+    font-size: 13px;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    padding: 2px;
+}
+.email-signature .signature-web span a {
+    color: white !important;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #15ca20;
+    border-color: #15ca20;
+}
+@media only screen and (min-width: 513px){
+    .email-signature .signature-img img{
+        width: 125px;
+        height: 135px;
+    }
+
+
+
+}
+@media only screen and (min-width: 221px) and (max-width: 512px) {
+    .email-signature .signature-img img{
+        width: 60px;
+        height: 65px;
+    }
+    .signature-content li span{
+        font-size: 11px;
+    }
+    .col-12, .col-4, .col-8{
+        padding: 0px;
+        margin: 0px;
+    }
+    .email-signature .signature-content li span{
+        width:auto;
+    }
+
+
+}
+
+</style>
+{% endblock css%}
+
+{% block js %}
+<script>
+    function myFunction() {
+     var printContents = document.getElementById('email-sign').innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+    
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+{% endblock js %}

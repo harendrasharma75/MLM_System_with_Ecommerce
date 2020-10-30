@@ -1,0 +1,272 @@
+{% extends 'myAdmin/admin_index.html' %}
+
+
+
+{% block body %}
+<div id="contentdiv" style="clear: both;">
+    <div class="table-responsive bg-light">
+        <div class="table_top" id="table_top">
+            <form method="POST" class="post-form" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+                <table style="float:left;" width="100%" align="center" cellpadding="0" cellspacing="0" class="table table-curved table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <div class="row">
+                                <div id="header" class="col-sm-6 float-right">
+                                    <span>Update General Page</span>
+                                </div>
+                                <div class="col-sm-6 float-right">Last Updated : <span style="color: red;">{{general.latest_date|date:'d-M-Y h:i:s A'}}</span></div>
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                    <td  width="94%">
+                                         <div class="form-group row">  
+                                                <input type="text" class="form-control" style="display: none;" name="status" id="id_status" maxlength="50" value="Active"/>
+                                            
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">HighLight Word</label>  
+                                            <div class="col-sm-9">  
+                                                <input type="text" class="form-control" name="hightlightword" id="id_hightlightword" maxlength="50" value="{{general.hightlightword}}"/>
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">HighLight Descroptions</label>  
+                                            <div class="col-sm-9">
+                                                <textarea type="text" style="resize: none;" rows="3" cols="50" class="form-control" name="hightlight_descriptions" id="id_hightlight_descriptions" maxlength="200">{{general.hightlight_descriptions}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Abous Us Heading</label>  
+                                            <div class="col-sm-9">  
+                                                <input type="text" class="form-control" name="about_heading" id="id_about_heading" maxlength="200" value="{{general.about_heading}}"/>
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Abous Us Descroptions</label>  
+                                            <div class="col-sm-9">
+                                                <textarea type="text" style="resize: none;" rows="10" cols="50" class="form-control" name="about_descriptions" id="id_about_descriptions" maxlength="4000">{{general.about_descriptions}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Products Heading</label>  
+                                            <div class="col-sm-9">  
+                                                <input type="text" class="form-control" name="product_heading" id="id_product_heading" maxlength="200" value="{{general.product_heading}}"/>
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Product 1</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_heading_1" id="id_product_heading_1" placeholder="Heading" maxlength="15" value="{{general.product_heading_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_desc_1" id="id_product_desc_1" placeholder="Short Description" maxlength="60" value="{{general.product_desc_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="product_image_1" placeholder="Photo" capture>
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Product 2</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_heading_2" id="id_product_heading_2" placeholder="Heading" maxlength="15" value="{{general.product_heading_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_desc_2" id="id_product_desc_2" placeholder="Short Description" maxlength="60" value="{{general.product_desc_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="product_image_2" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Product 3</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_heading_3" id="id_product_heading_3" placeholder="Heading" maxlength="15" value="{{general.product_heading_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_desc_3" id="id_product_desc_3" placeholder="Short Description" maxlength="60" value="{{general.product_desc_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="product_image_3" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Product 4</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_heading_4" id="id_product_heading_4" placeholder="Heading" maxlength="15" value="{{general.product_heading_4}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="product_desc_4" id="id_product_desc_4" placeholder="Short Description" maxlength="60" value="{{general.product_desc_4}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="product_image_4" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses Heading</label>  
+                                            <div class="col-sm-9">  
+                                                <input type="text" class="form-control" name="glimpses_heading" id="id_glimpses_heading" maxlength="300" value="{{general.glimpses_heading}}"/>
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 1</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_1" id="id_glimpses_heading_1" placeholder="Heading" maxlength="50" value="{{general.glimpses_heading_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_1" id="id_glimpses_desc_1" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_1" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 2</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_2" id="id_glimpses_heading_2" placeholder="Heading" maxlength="50" value="{{general.glimpses_heading_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_2" id="id_glimpses_desc_2" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_2" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 3</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_3" id="id_glimpses_heading_3" placeholder="Heading" maxlength="55" value="{{general.glimpses_heading_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_3" id="id_glimpses_desc_3" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_3" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 4</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_4" id="id_glimpses_heading_4" placeholder="Heading" maxlength="50" value="{{general.glimpses_heading_4}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_4" id="id_glimpses_desc_4" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_4}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_4" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 5</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_5" id="id_glimpses_heading_5" placeholder="Heading" maxlength="50" value="{{general.glimpses_heading_5}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_5" id="id_glimpses_desc_5" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_5}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_5" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Glimpses 6</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_heading_6" id="id_glimpses_heading_6" placeholder="Heading" maxlength="50" value="{{general.glimpses_heading_6}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="glimpses_desc_6" id="id_glimpses_desc_6" placeholder="Short Description" maxlength="200" value="{{general.glimpses_desc_6}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="glimpses_image_6" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Offer Heading</label>  
+                                            <div class="col-sm-9">  
+                                                <input type="text" class="form-control" name="offer_heading" id="id_offer_heading" maxlength="300" value="{{general.offer_heading}}"/>
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Offer 1</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_heading_1" id="id_offer_heading_1" placeholder="Heading" maxlength="50" value="{{general.offer_heading_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_desc_1" id="id_offer_desc_1" placeholder="Short Description" maxlength="200" value="{{general.offer_desc_1}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="offer_image_1" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Offer 2</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_heading_2" id="id_offer_heading_2" placeholder="Heading" maxlength="50" value="{{general.offer_heading_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_desc_2" id="id_offer_desc_2" placeholder="Short Description" maxlength="200" value="{{general.offer_desc_2}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="offer_image_2" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Offer 3</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_heading_3" id="id_offer_heading_3" placeholder="Heading" maxlength="55" value="{{general.offer_heading_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="offer_desc_3" id="id_offer_desc_3" placeholder="Short Description" maxlength="200" value="{{general.offer_desc_3}}"/>
+                                            </div> 
+                                            <div class="col-sm-3">  
+                                                <input id="id_imageUpload" type="file" name="offer_image_3" placeholder="Photo" capture> 
+                                            </div> 
+                                        </div>
+                                            
+                        
+                                    </td>           
+                                </table>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1" >
+                                    <tr>
+                                        <div class="form-group row" >
+                                            <div class="col-sm-7"></div>
+                                            <div class="col-sm-5">
+                                                <button style="border:none;" type="submit" value="Submit">
+                                                    <a class="btn" style="background-color: green;">Submit</a>
+                                                </button>
+                                                
+                                                <a class="btn" style="background-color: red;" href="settings">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </tr> 
+                                    <tr></tr>
+                                </table> 
+                            </td>
+                    
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            
+        </div>   
+    </div>
+</div>
+    
+
+{% endblock body %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block js %}
+<script>
+   
+</script>
+{% endblock js %}

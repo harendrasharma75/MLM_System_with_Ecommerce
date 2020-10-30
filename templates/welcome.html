@@ -1,0 +1,286 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}
+      {{member.full_name}}-Welcome!
+{% endblock title %}
+
+{% block body %}
+{% load static %}
+<div id="DivIdToPrint" class="bg-light">      
+    <div class="w-letter">
+        <div class="row">
+            <div class="header">
+                <!-- <img src="http://ias369.treeids.in/m/user_photos/83901_1920064545.jpg" alt=""> -->
+                <h3>Company Logo</h3>
+            </div>
+        </div>
+        <div class="row mid-one">
+            <div class="col-md-3">
+                <div class="user-img"> 
+                    <img class="welcomeimg mx-2" src="/media/{{member.user_image}}"  width="150" height="150">
+                                        
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="user-detail">
+                    <ul>
+                        <li><p>Member ID : <span>{{member.member_id}}</span></p></li>
+                        <li><p>Name : <span>{{member.full_name}}</span></p></li>
+                        <li><p>Mobile No : <span>{{member.contact}}</span></p></li>
+                        
+                       
+                        <li><p>Address : <span>{{member.address}}, {{member.city}}, {{member.state}}-{{member.pincode}}, {{member.country}} </span></p></li>
+                        <li><p>City : <span>{{member.city}}</span></p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                   <div class="join-box">
+                       <h3><span>Joinig Amount </span><span"><span class="currency">₹{{member.join_amount}}</span></span></h3>
+                       <p>Joining Date : <span>{{member.join_date|date:'d-M-Y'}}</span> </p>
+                   </div>
+            </div>
+        </div>
+        <div class="row bot-one">
+            <div class="welcometext"> 
+            
+                    <span class="w-head">Dear {{member.first_name}},</span>
+                                  
+                     <div class="c22"> Congratulations on Your Decision To Join Company with Us!</div>
+                       <span class="c4 mfont wel" style="overflow:scroll; color:Black;">
+                        <p><span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">You are now a part of the opportunity of 
+                            the millennium.Company is an exciting "</span>
+                            <span style="font-family: verdana,arial,helvetica,sans-serif; font-size: 14px; font-weight: bold;">
+                                People Business</span>
+                                <span style="font-family: arial,helvetica,sans-serif; font-size: 14px;">
+                                    ". A business that has the potential to turn your dreams into reality. As you build your business,
+                                     you will establish lifelong friendships and develop support systems unparalleled in any other business.
+                                      Everyone(at) Company Name is here to H.E.L.P.(High Energy Level Participation) you thrive to Prosperity. 
+                                      We pledge our best efforts to provide the levels of continuing support necessary to ensure that your 
+                                      business is a total success. You are in this business for yourself, not by yourself. We have developed 
+                                      an effective and proven progress plan to help you launch a profitable business of your own. With YOU in 
+                                      control, you determine your own level of commitment in order to adapt and benefit your lifestyle and 
+                                      personal goals. The rewards are tremendous for those who endure the efforts required to develop a stable 
+                                      organization, one from which you can potentially benefit from eternally. We are confident that you will 
+                                      receive gratification from your involvement with Company Name and we wish you every Success! Please note 
+                                      we are providing you an opportunity to earn money which is optional,your earnings will depend directly in 
+                                      the amount of efforts you put to develop your business etc.
+                                    </span>
+                                </p>
+                            </span>
+            </div>
+        </div>
+       <div class="row fot-one">
+            <div class="logo-side">
+                <!-- <img class="img2" src="user_photos/70174_1020051404.jpg" style="border-width:0px;"> -->
+            </div>
+            <div class="sign-side mx-4">
+                    <span class="c3 mfont">Winning Regards,</span>                                
+                    <span class="c9 mfont">Arun Sharma</span>
+                     <span class="c9 mfont">THE DESK OF THE DIRECTORS</span>                                 
+                    <span></span>
+                    <span>http://123.com</span>
+
+            </div>
+        </div>
+       
+    </div>
+</div>
+<center><input type="button" class="btn btn-success" onclick="myFunction()" id="btnPrint" value="Print"></center>
+
+
+
+{% endblock body %}
+
+{% block css%}
+<style>
+    .w-letter .mid-one {
+    margin-top: 45px;
+    border-bottom: 1px solid #ccc;
+}
+.w-letter {
+    border: 1px solid #ccc;
+    padding: 15px 15px 16% 15px;
+    width: 100%;
+    background: #fff;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.w-letter .mid-one ul {
+    margin: 0px;
+    padding-left: 22px;
+    border-left: 1px solid #ccc;
+}
+.w-letter .mid-one ul li {
+    list-style: none;
+    line-height: 30px;
+    text-align: left;
+    font-size: 16px;
+}
+.w-letter .mid-one ul li p {
+    font-size: 14px;
+    font-weight: 600;
+    color: BLACK;
+    margin: 0px;
+}
+.w-letter .mid-one ul li span {
+    font-size: 14px;
+    color: #f53b57;
+    font-weight: normal;
+}
+.w-letter .mid-one .join-box {
+    padding-top: 25px;
+    margin-right: 0px;
+}
+.w-letter .mid-one .join-box h3 {
+    color: #f44336;
+    text-align: end;
+    margin: 0px;
+    padding: 0px;
+}
+.h3, h3 {
+    font-size: 30px;
+    line-height: 34px;
+}
+.currency {
+    font-size: 20px;
+}
+.w-letter .mid-one .join-box p {
+    color: #337ab7;
+    font-size: 14px;
+    text-align: end;
+}
+.w-letter .welcometext {
+    height: auto !important;
+    overflow-x: unset;
+    width: 95% !important;
+    margin: auto;
+}
+.welcometext {
+    /* height: 350px !important; */
+    overflow-x: unset;
+    width: 100% !important;
+}
+.w-letter .bot-one span.w-head {
+    font-size: 25px;
+    font-weight: 500;
+    color: #3994fb;
+}
+.mfont {
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 0px;
+    font-weight: 600;
+    font-style: normal !important;
+}
+.w-letter .bot-one .welcometext p {
+    height: auto;
+    overflow-y: auto !important;
+    line-height: 200%;
+    text-align: justify;
+}
+.w-letter .fot-one .sign-side span {
+    display: block;
+    font-size: smaller;
+    line-height: 30px;
+}
+.w-letter .fot-one .sign-side span {
+    display: block;
+    font-size: smaller;
+    line-height: 30px;
+}   
+
+@media screen and (min-width: 240px){
+.w-letter .mid-one ul li p {
+    font-size: 10px;
+}
+.w-letter .mid-one ul li span {
+    font-size: 10px;
+}
+.header {
+    height: auto;
+    max-width: 257px;
+    min-width: 257px;
+    width: 257px;
+    text-align: center;
+}
+.w-letter .mid-one .join-box p {
+    font-size: 10px;
+}
+.w-letter .bot-one span.w-head {
+    font-size: 20px;
+}
+.w-letter .bot-one .c22 {
+    font-size: 13px;
+}
+}
+@media screen and (min-width: 960px){
+.w-letter .mid-one ul li p {
+    font-size: 14px;
+}
+.w-letter .mid-one ul li span {
+    font-size: 14px;
+}
+.col-md-3 {
+    width: 25%;
+    float: left;
+}
+.col-md-4 {
+    width: 33.33333333%;
+    float: left;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.col-md-5 {
+    width: 41.66666667%;
+    float: left;
+}
+.w-letter .mid-one .join-box p {
+    font-size: 14px;
+}
+w-letter .bot-one span.w-head {
+    font-size: 25px;
+}
+.w-letter .bot-one .c22 {
+    font-size: 20px;
+}
+}
+
+center {
+    display: block;
+    text-align: -webkit-center;
+}
+
+
+</style>
+{% endblock css%}
+
+{% block js %}
+<script>
+    function myFunction() {
+     var printContents = document.getElementById('DivIdToPrint').innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+    
+     
+
+     document.body.innerHTML = originalContents;
+     window.location.assign("/welcome_letter")
+}
+</script>
+{% endblock js %}

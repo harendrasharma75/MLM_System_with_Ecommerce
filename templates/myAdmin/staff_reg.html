@@ -1,0 +1,119 @@
+{% extends 'myAdmin/admin_index.html' %}
+
+
+
+{% block body %}
+<div id="contentdiv" style="clear: both;">
+    <div class="table-responsive bg-light">
+        <div class="table_top" id="table_top">
+            <form method="POST" class="post-form" enctype="multipart/form-data" action="/myAdmin/add_Staff">
+                {% csrf_token %}
+                <table style="float:left;" width="100%" align="center" cellpadding="0" cellspacing="0" class="table table-curved table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <div id="header">
+                                    <span>Add New Staff</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1">
+                                    <tbody><tr><td align="center">Enter Basic Details <strong>of New Staff</strong> </td></tr></tbody>
+                                </table>
+                                <table width="100%" align="center" class="table table-bordered table-hover table-striped">
+                                    <td  width="94%">
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">First Name</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="first_name" id="id_first_name" required maxlength="50" value=""/>
+                                            </div>  
+                                            <label class="col-sm-3 col-form-label">Last Name</label>  
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" name="last_name" id="id_last_name" required maxlength="50" value=""/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Contact</label>  
+                                        
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="contact" id="id_contact"  value="" required maxlength="10" />     
+                                            </div> 
+                                    
+                                            <label class="col-sm-3 col-form-label">Email</label>  
+                                           
+                                            <div class="col-sm-3">  
+                                                <input type="email" class="form-control" name="email" id="id_email"  value="" maxlength="100" />     
+                                            </div>  
+                                        </div>
+
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Rights</label>  
+                                        
+                                            <div class="col-sm-3">  
+                                                <select type="text" list="rights" class="form-control" name="rights" id="id_rights" required>
+                                                    <option value=""></option>
+                                                    <option value="Staff Rights">Staff Rights</option>
+                                                    <option value="Full Rights">Full Rights</option>
+                                                </select>
+                                            </div> 
+                                    
+                                            <label class="col-sm-3 col-form-label">Designation</label>  
+                                           
+                                            <div class="col-sm-3">  
+                                                <select type="text" list="designation" class="form-control" name="designation" id="id_designation" required>
+                                                    <option value=""></option>
+                                                    <option value="Assistant">Assistant</option>
+                                                    <option value="Associate">Associate</option>
+                                                    <option value="Co-ordinator">Co-ordinator</option>
+                                                    <option value="Manager">Manager</option>
+                                                    <option value="Supervisor">Supervisor</option>
+                                                    <option value="HOD">HOD</option>
+                                                    <option value="CEO">CEO</option>
+                                                    <option value="Admin">Admin</option>
+                                                </select>    
+                                            </div>  
+                                        </div>
+                                        <div class="form-group row">  
+                                            <label class="col-sm-3 col-form-label">Creator</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="creator_name" id="id_creator_name"  value="{{staff.full_name}}" maxlength="50" readonly/>     
+                                            </div>  
+                                        
+                                            <label class="col-sm-3 col-form-label">Creator ID</label>  
+                                            <div class="col-sm-3">  
+                                                <input type="text" class="form-control" name="creator_id" id="id_creator_id"  value="{{staff.staff_id}}" maxlength="50" readonly />     
+                                            </div>  
+                                        </div>
+                                    </td>           
+                                </table>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head1" >
+                                    <tr>
+                                        <div class="form-group row" >
+                                            <div class="col-sm-7"></div>
+                                            <div class="col-sm-5">
+                                                <button style="border:none;" type="submit" value="Submit">
+                                                    <a class="btn" style="background-color: green;">Submit</a>
+                                                </button>
+                                                
+                                                <a class="btn" style="background-color: red;" href="/myAdmin">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </tr> 
+                                    <tr></tr>
+                                </table> 
+                            </td>
+                    
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            
+        </div>   
+    </div>
+</div>
+    
+
+
+{% endblock body %}
