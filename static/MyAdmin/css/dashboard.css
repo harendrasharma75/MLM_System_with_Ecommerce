@@ -1,0 +1,159 @@
+main.page-content {
+  background: radial-gradient(blue, gray);
+}
+
+.col-6.col-lg-6.col-xl-3 {
+  background: radial-gradient(black, transparent);
+}
+
+.card.total_eb {
+ 
+  border-radius: 50px;
+  width: auto;
+  height: 200px;
+  margin: 10px;
+  min-width: 130px;
+ 
+}
+
+.card.total_eb.wallet {
+  background: url("/static/MyAdmin/images/wallet.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  /* -moz-box-shadow: inset 0px 250px 200px -200px #fff;
+    -webkit-box-shadow: inset 0px 250px 200px -200px #fff;
+    -o-box-shadow: inset 0px 250px 200px -200px #fff; */
+    box-shadow: inset 0px 250px 100px -200px #fff;
+  
+}
+
+
+
+.card.total_eb.sms {
+  background: url("/static/MyAdmin/images/sms.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+.card.total_eb.pinss {
+  background: url("/static/MyAdmin/images/pin.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+  
+}
+
+.card.total_eb.withdrawals {
+  background: url("/static/MyAdmin/images/withdraw.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+
+.card.total_eb.joinings {
+  background: url("/static/MyAdmin/images/join.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+
+.card.total_eb.total_Join {
+  background: url("/static/MyAdmin/images/total-join.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+
+.card.total_eb.payoutsale {
+  background: url("/static/MyAdmin/images/lastpayout.png");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+
+.card.total_eb.Summary {
+  background: url("/static/MyAdmin/images/payout-summary.jpg");
+ 
+  background-size: 100% 100%;
+     
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 250px 100px -200px #fff;
+}
+
+.text-center {
+  text-align: center!important;
+  font-weight: 800;
+}
+.current {
+  border-radius: 50px;
+  height: 30px;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 3px;
+  bottom: 0;
+}
+div.card-body a:hover{
+  text-decoration: none;
+  
+  
+}
+
+.mb-0, a#admin{
+  color: darkblue;
+  
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a#admin:hover{
+  color: orangered;
+}
+
+/* @media screen and (min-width:1000px){
+  .card.total_eb {
+     border-radius: 50px;
+    width: auto;
+    height: 200px;
+    margin: 10px;
+   
+  }
+
+
+}
+
+@media screen and (max-width:768px){
+  .card.total_eb {
+     border-radius: 50px;
+    width: auto;
+    height: 200px;
+    margin: 10px;
+   
+  } 
+
+
+} */
